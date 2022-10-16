@@ -16,7 +16,7 @@ author_notes:
 publishDate: "2022-10-15"
 
 # Summary. An optional shortened abstract.
-summary: "This package provides pre-processed RNA-seq data where the epithelial to mesenchymal transition was induced on cell lines. These data come from three publications Cursons et al. (2015), Cursons etl al. (2018) and Foroutan et al. (2017). In each of these publications, EMT was induces across multiple cell lines following treatment by TGFb among other stimulants. This data will be useful in determining the regulatory programs modified in order to achieve an EMT. Data were processed by the Davis laboratory in the Bioinformatics division at WEHI."
+summary: "This package provides pre-processed RNA-seq data where the epithelial to mesenchymal transition was induced on cell lines. These data come from three publications Cursons et al. (2015), Cursons et al. (2018) and Foroutan et al. (2017). In each of these publications, EMT was induces across multiple cell lines following treatment by TGFb among other stimulants. This data will be useful in determining the regulatory programs modified in order to achieve an EMT. Data were processed by the Davis laboratory in the Bioinformatics division at WEHI."
 
 tags:
 - R/Bioconductor
@@ -27,7 +27,7 @@ links:
   url: https://davislaboratory.github.io/GenesetAnalysisWorkflow
 - name: Report a bug
   url: https://github.com/DavisLaboratory/emtdata/issues
-url_code: 'https://github.com/DavisLaboratory/emtdata
+url_code: https://github.com/DavisLaboratory/emtdata
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
