@@ -1,38 +1,38 @@
 ---
-title: "singscore"
+title: "SingscoreAMLMutations"
 authors:
-- Ruqian Lyu
-- Momeneh Foroutan
 - admin
-- Malvika Kharbanda
-date: "2018"
-doi: "https://doi.org/10.18129/B9.bioc.singscore"
+- Momeneh Foroutan
+- Yi Xie
+- Ruqian Lyu
+- Joseph Cursons
+- Melissa J Davis
+date: "2019"
+doi: "https://doi.org/10.18129/B9.bioc.SingscoreAMLMutations"
 
 author_notes:
+  - 'maintainer'
   - ''
   - ''
-  - 'maintainer'
-  - 'maintainer'
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2022-10-15"
 
 # Summary. An optional shortened abstract.
-summary: "A simple single-sample gene signature scoring method that uses rank-based statistics to analyze the sample's gene expression profile. It scores the expression activities of gene sets at a single-sample level."
+summary: "This workflow package shows how transcriptomic signatures can be used to infer phenotypes. The workflow begins by showing how the TCGA AML transcriptomic data can be downloaded and processed using the TCGAbiolinks packages. It then shows how samples can be scored using the singscore package and signatures from the MSigDB. Finally, the predictive capacity of scores in the context of predicting a specific mutation in AML is shown.The workflow exhibits the interplay of Bioconductor packages to achieve a gene-set level analysis."
 
 tags:
 - R/Bioconductor
 - gene-set enrichment analysis
 - molecular phenotypes
+- predict mutation status
 
 links:
-- name: Webpage
-  url: https://davislaboratory.github.io/singscore/
 - name: Workshop
   url: https://bioconductor.org/packages/release/workflows/html/SingscoreAMLMutations.html
 - name: Report a bug
-  url: https://github.com/DavisLaboratory/singscore/issues
-url_code: 'https://github.com/DavisLaboratory/singscore'
+  url: https://github.com/DavisLaboratory/SingscoreAMLMutations/issues
+url_code: 'https://github.com/DavisLaboratory/SingscoreAMLMutations'
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
@@ -55,5 +55,3 @@ projects: []
 #   Otherwise, set `slides: ""`.
 slides: ""
 ---
-
-[![R-CMD-check](https://github.com/DavisLaboratory/singscore/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/DavisLaboratory/singscore/actions) [![codecov](https://codecov.io/gh/DavisLaboratory/singscore/branch/master/graph/badge.svg?token=OWOL51QJD1)](https://codecov.io/gh/DavisLaboratory/singscore) [![BioC status](https://bioconductor.org/shields/years-in-bioc/singscore.svg)](https://bioconductor.org/packages/singscore/)

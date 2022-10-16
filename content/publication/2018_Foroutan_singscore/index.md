@@ -39,6 +39,8 @@ summary: singscore is a robust rank-based method to compute molecular phenotypes
 tags:
 - gene-set enrichment analysis
 - molecular phenotypes
+- breast cancer
+- EMT
 featured: true
 
 links:

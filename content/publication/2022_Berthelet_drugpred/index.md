@@ -49,6 +49,7 @@ tags:
 - pharmacogenomics
 - molecular phenotypes
 - drug reponse prediction
+- breast cancer
 featured: false
 
 links:
