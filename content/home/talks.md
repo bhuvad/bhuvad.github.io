@@ -30,6 +30,11 @@ content:
   offset: 0
   # Page order: descending (desc) or ascending (asc) date.
   order: desc
+  filter_button:
+    - name: All
+      tag: '*'
+    - name: Invited talks
+      tag: invited talk
 
 design:
   # Choose a view for the listings:
