@@ -1,7 +1,7 @@
 ---
-  # An instance of the Pages widget.
-  # Documentation: https://wowchemy.com/docs/page-builder/
-  widget: collection
+# An instance of the Pages widget.
+# Documentation: https://wowchemy.com/docs/page-builder/
+widget: collection
 
 # This file represents a page section.
 headless: true
@@ -15,24 +15,24 @@ subtitle: ''
 content:
   # Filter on criteria
   filters:
-  folders:
-  - softwares
-tag: ''
-category: ''
-publication_type: ''
-author: ''
-exclude_featured: false
-exclude_future: false
-exclude_past: false
-# Choose how many pages you would like to display (0 = all pages)
-count: 10
-# Choose how many pages you would like to offset by
-offset: 0
-# Page order: descending (desc) or ascending (asc) date.
-order: desc
+	folders:
+	  - softwares
+	tag: ''
+	category: ''
+	publication_type: ''
+	author: ''
+	exclude_featured: false
+	exclude_future: false
+	exclude_past: false
+  # Choose how many pages you would like to display (0 = all pages)
+  count: 10
+  # Choose how many pages you would like to offset by
+  offset: 0
+  # Page order: descending (desc) or ascending (asc) date.
+  order: desc
 design:
   # Choose a view for the listings:
   view: 3
-columns: '1'
+  columns: '1'
 ---
 
