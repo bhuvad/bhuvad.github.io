@@ -1,1 +1,3 @@
-Sitemap: https://github.com/bhuvad/bhuvad_webpage/sitemap.xml
+User-agent: *
+
+Sitemap: https://bhuvad.github.io/sitemap.xml
