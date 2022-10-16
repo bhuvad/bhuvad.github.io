@@ -28,6 +28,8 @@ content:
       tag: '*'
     - name: Invited talks
       tag: invited talk
+    # - name: Keynotes
+    #   tag: keynote
 
 design:
   # Choose a view for the listings:
