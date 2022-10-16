@@ -9,30 +9,30 @@ headless: true
 # Order that this section appears on the page.
 weight: 75
 
-title: Recent Softwares
+title: Recent Publications
 subtitle: ''
 
 content:
   # Filter on criteria
   filters:
-	folders:
-	  - softwares
-	tag: ''
-	category: ''
-	publication_type: ''
-	author: ''
-	exclude_featured: false
-	exclude_future: false
-	exclude_past: false
+    folders:
+      - softwares
+    tag: ''
+    category: ''
+    publication_type: ''
+    author: ''
+    exclude_featured: false
+    exclude_future: false
+    exclude_past: false
   # Choose how many pages you would like to display (0 = all pages)
-  count: 10
+  count: 5
   # Choose how many pages you would like to offset by
   offset: 0
   # Page order: descending (desc) or ascending (asc) date.
   order: desc
 design:
   # Choose a view for the listings:
-  view: 3
-  columns: '1'
+  view: citation
+  columns: '2'
 ---
 
