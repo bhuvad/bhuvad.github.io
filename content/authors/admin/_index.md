@@ -53,12 +53,15 @@ social:
     label: Follow me on Twitter
     display:
       header: true
-  - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
-    icon_pack: fas
+  - icon: google-scholar # Alternatively, use `graduation-cap` icon from `fas` icon pack
+    icon_pack: ai
     link: https://scholar.google.com/citations?user=Jz-azvUAAAAJ&hl=en
   - icon: github
     icon_pack: fab
     link: https://github.com/bhuvad
+  - icon: orcid
+    icon_pack: ai
+    link: https://orcid.org/0000-0002-6398-9157
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/dbhuva/

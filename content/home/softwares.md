@@ -7,7 +7,7 @@ widget: collection
 headless: true
 
 # Order that this section appears on the page.
-weight: 75
+weight: 95
 
 title: Recent softwares
 subtitle: ''
@@ -32,7 +32,7 @@ content:
   order: desc
 design:
   # Choose a view for the listings:
-  view: citation
+  view: 3
   columns: '1'
 ---
 
