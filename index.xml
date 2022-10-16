@@ -9,22 +9,65 @@ Click on the &lt;strong>Slides&lt;/strong> button above to view the built-in sli
 &lt;li>&lt;strong>Upload&lt;/strong> an existing slide deck to &lt;code>static/&lt;/code> and link using &lt;code>url_slides&lt;/code> parameter in the front matter of the talk file&lt;/li>
 &lt;li>&lt;strong>Embed&lt;/strong> your slides (e.g. Google Slides) or presentation video on this page using &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">shortcodes&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>singscore</title><link>https://bhuvad.github.io/softwares/singscore/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/singscore/</guid><description>&lt;p>&lt;a href="https://github.com/DavisLaboratory/singscore/actions" target="_blank" rel="noopener">
+&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>dcanr</title><link>https://bhuvad.github.io/softwares/dcanr/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/dcanr/</guid><description>&lt;p>&lt;a href="https://github.com/DavisLaboratory/dcanr/actions" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://github.com/DavisLaboratory/dcanr/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://codecov.io/gh/DavisLaboratory/dcanr" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://codecov.io/gh/DavisLaboratory/dcanr/branch/master/graph/badge.svg?token=93RXZRHIBJ" alt="codecov" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://bioconductor.org/packages/dcanr/" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://bioconductor.org/shields/years-in-bioc/dcanr.svg" alt="BioC status" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a>&lt;/p></description></item><item><title>emtdata</title><link>https://bhuvad.github.io/softwares/emtdata/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/emtdata/</guid><description/></item><item><title>msigdb</title><link>https://bhuvad.github.io/softwares/msigdb/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/msigdb/</guid><description/></item><item><title>singscore</title><link>https://bhuvad.github.io/softwares/singscore/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/singscore/</guid><description>&lt;p>&lt;a href="https://github.com/DavisLaboratory/singscore/actions" target="_blank" rel="noopener">
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="https://github.com/DavisLaboratory/singscore/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/a>
-&lt;a href="https://codecov.io/gh/DavisLaboratory/singscore" target="_blank" rel="noopener">
+&lt;/a> &lt;a href="https://codecov.io/gh/DavisLaboratory/singscore" target="_blank" rel="noopener">
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="https://codecov.io/gh/DavisLaboratory/singscore/branch/master/graph/badge.svg?token=OWOL51QJD1" alt="codecov" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/a>
-&lt;a href="https://bioconductor.org/packages/singscore/" target="_blank" rel="noopener">
+&lt;/a> &lt;a href="https://bioconductor.org/packages/singscore/" target="_blank" rel="noopener">
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="https://bioconductor.org/shields/years-in-bioc/singscore.svg" alt="BioC status" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a>&lt;/p></description></item><item><title>SingscoreAMLMutations</title><link>https://bhuvad.github.io/softwares/singscoreamlmutations/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/singscoreamlmutations/</guid><description/></item><item><title>standR</title><link>https://bhuvad.github.io/softwares/standr/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/standr/</guid><description>&lt;p>&lt;a href="https://github.com/DavisLaboratory/standR/actions" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://github.com/DavisLaboratory/standR/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://codecov.io/github/DavisLaboratory/standR?branch=master" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://codecov.io/gh/DavisLaboratory/standR/branch/master/graph/badge.svg" alt="Coverage status" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://bioconductor.org/packages/standR/" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://bioconductor.org/shields/years-in-bioc/standR.svg" alt="BioC status" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a>&lt;/p></description></item><item><title>vissE</title><link>https://bhuvad.github.io/softwares/visse/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/softwares/visse/</guid><description>&lt;p>&lt;a href="https://github.com/DavisLaboratory/vissE/actions" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://github.com/DavisLaboratory/vissE/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://codecov.io/gh/DavisLaboratory/vissE" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://codecov.io/gh/DavisLaboratory/vissE/branch/main/graph/badge.svg?token=8JHZB1GN26" alt="codecov" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/a> &lt;a href="https://bioconductor.org/packages/vissE/" target="_blank" rel="noopener">
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://bioconductor.org/shields/years-in-bioc/vissE.svg" alt="BioC status" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/a>&lt;/p></description></item><item><title>Transcriptomic profiling of cardiac tissues from SARS-CoV-2 patients identifies DNA damage</title><link>https://bhuvad.github.io/publication/2022_kulasinghe_covidheart/</link><pubDate>Thu, 15 Sep 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/publication/2022_kulasinghe_covidheart/</guid><description/></item><item><title>Profiling of lung SARS-CoV-2 and influenza virus infection dissects virus-specific host responses and gene signatures</title><link>https://bhuvad.github.io/publication/2022_kulasinghe_covidlung/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/publication/2022_kulasinghe_covidlung/</guid><description/></item><item><title>Computational Screening of Anti-Cancer Drugs Identifies a New BRCA Independent Gene Expression Signature to Predict Breast Cancer Sensitivity to Cisplatin</title><link>https://bhuvad.github.io/publication/2022_berthelet_drugpred/</link><pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/publication/2022_berthelet_drugpred/</guid><description/></item><item><title>vissE: A versatile tool to identify and visualise higher-order molecular phenotypes from functional enrichment analysis</title><link>https://bhuvad.github.io/publication/2022_bhuva_visse/</link><pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/publication/2022_bhuva_visse/</guid><description/></item><item><title>Systems pharmacogenomics identifies novel targets and clinically actionable therapeutics for medulloblastoma</title><link>https://bhuvad.github.io/publication/2021_genovesi_mb/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/publication/2021_genovesi_mb/</guid><description/></item><item><title>Welcome to Wowchemy, the website builder for Hugo</title><link>https://bhuvad.github.io/post/getting-started/</link><pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate><guid>https://bhuvad.github.io/post/getting-started/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">libr&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;hello&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
@@ -173,7 +216,7 @@ console.log('code block');
 &lt;p>Wowchemy supports the popular &lt;a href="https://plot.ly/" target="_blank" rel="noopener">Plotly&lt;/a> format for interactive charts.&lt;/p>
 &lt;p>Save your Plotly JSON in your page folder, for example &lt;code>line-chart.json&lt;/code>, and then add the &lt;code>{{&amp;lt; chart data=&amp;quot;line-chart&amp;quot; &amp;gt;}}&lt;/code> shortcode where you would like the chart to appear.&lt;/p>
 &lt;p>Demo:&lt;/p>
-&lt;div id="chart-849523617" class="chart">&lt;/div>
+&lt;div id="chart-387264519" class="chart">&lt;/div>
 &lt;script>
 (function() {
 let a = setInterval( function() {
@@ -182,7 +225,7 @@ return;
 }
 clearInterval( a );
 Plotly.d3.json("./line-chart.json", function(chart) {
-Plotly.plot('chart-849523617', chart.data, chart.layout, {responsive: true});
+Plotly.plot('chart-387264519', chart.data, chart.layout, {responsive: true});
 });
 }, 500 );
 })();
