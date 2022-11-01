@@ -28,6 +28,8 @@ content:
       tag: '*'
     - name: Invited talks
       tag: invited talk
+    - name: Workshops
+      tag: workshop
     # - name: Keynotes
     #   tag: keynote
 

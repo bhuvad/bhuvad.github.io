@@ -30,6 +30,7 @@ tags:
   - networks
   - breast cancer
   - EMT
+  - workshop
 
 # Is this a featured talk? (true/false)
 featured: false
