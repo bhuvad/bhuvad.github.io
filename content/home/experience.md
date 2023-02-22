@@ -42,7 +42,7 @@ experience:
     company_logo: WEHI_RGB_logo
     location: Melbourne
     date_start: '2020-06-01'
-    date_end: '2022-02-11'
+    date_end: '2023-02-11'
     description: |2-
         Responsibilities include:
         
