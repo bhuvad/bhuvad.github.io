@@ -22,7 +22,7 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: Senior Post-doctoral Researcher
+  - title: Senior Post-doctoral Researcher (Computational Systems Oncology)
     company: South Australian Immunogenomics Cancer Institute (SAiGENCI)
     company_url: 'https://www.adelaide.edu.au/saigenci/'
     company_logo: saigenci
