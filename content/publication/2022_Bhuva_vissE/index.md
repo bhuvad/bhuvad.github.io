@@ -39,7 +39,7 @@ tags:
 - EMT
 - spatial
 - single-cell
-featured: true
+featured: false
 
 links:
 - name: Web tool
