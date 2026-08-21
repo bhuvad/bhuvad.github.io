@@ -107,6 +107,161 @@
   </div>
 </section>
 
+<section class="section" id="research">
+  <div class="wrap">
+    <h2>Current focus: modelling counts in spatial transcriptomics</h2>
+    <p class="lede">
+      Spatial transcriptomics measures gene expression while preserving where in the tissue each
+      measurement came from. That spatial context is exactly what makes the counts hard to model:
+      the number of molecules captured at a location — its <em>library size</em> — is not a nuisance
+      scattered at random, but is itself spatially structured and correlated with the tissue's
+      biology. Methods inherited from single-cell analysis assume otherwise, and quietly delete real
+      signal as a result. My work builds count models that respect this structure.
+    </p>
+
+    <figure class="figure">
+      <svg viewBox="0 0 900 420" role="img" xmlns="http://www.w3.org/2000/svg"
+           aria-label="Standard normalisation divides spatial counts by library size and removes biological structure along with the technical signal. SpaNorm instead fits a spatially-smooth generalised linear model that separates technical from biological variation and removes only the technical part, so tissue structure is retained.">
+        <defs>
+          <marker id="st-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+          <marker id="st-arrow-ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--accent, #0f766e)"/>
+          </marker>
+          <linearGradient id="st-ls" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="currentColor" stop-opacity="0.03"/>
+            <stop offset="1" stop-color="currentColor" stop-opacity="0.26"/>
+          </linearGradient>
+        </defs>
+        <!-- Observed counts -->
+        <text x="95" y="133" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Observed counts</text>
+        <rect x="30" y="145" width="130" height="130" rx="8" fill="url(#st-ls)" stroke="currentColor" stroke-opacity="0.25"/>
+        <circle cx="45" cy="160" r="3" fill="currentColor" opacity="0.4"/>
+        <circle cx="70" cy="160" r="4" fill="currentColor" opacity="0.4"/>
+        <circle cx="95" cy="160" r="5" fill="currentColor" opacity="0.4"/>
+        <circle cx="120" cy="160" r="6" fill="currentColor" opacity="0.4"/>
+        <circle cx="145" cy="160" r="7" fill="currentColor" opacity="0.4"/>
+        <circle cx="45" cy="185" r="3" fill="currentColor" opacity="0.4"/>
+        <circle cx="70" cy="185" r="7" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="95" cy="185" r="8" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="120" cy="185" r="9" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="145" cy="185" r="7" fill="currentColor" opacity="0.4"/>
+        <circle cx="45" cy="210" r="3" fill="currentColor" opacity="0.4"/>
+        <circle cx="70" cy="210" r="7" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="95" cy="210" r="8" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="120" cy="210" r="9" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="145" cy="210" r="7" fill="currentColor" opacity="0.4"/>
+        <circle cx="45" cy="235" r="3" fill="currentColor" opacity="0.4"/>
+        <circle cx="70" cy="235" r="7" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="95" cy="235" r="8" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="120" cy="235" r="9" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <circle cx="145" cy="235" r="7" fill="currentColor" opacity="0.4"/>
+        <circle cx="45" cy="260" r="3" fill="currentColor" opacity="0.4"/>
+        <circle cx="70" cy="260" r="4" fill="currentColor" opacity="0.4"/>
+        <circle cx="95" cy="260" r="5" fill="currentColor" opacity="0.4"/>
+        <circle cx="120" cy="260" r="6" fill="currentColor" opacity="0.4"/>
+        <circle cx="145" cy="260" r="7" fill="currentColor" opacity="0.4"/>
+        <text x="95" y="296" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">library size varies</text>
+        <text x="95" y="311" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">with tissue biology</text>
+
+        <!-- branch to each approach -->
+        <line x1="166" y1="180" x2="282" y2="102" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#st-arrow)"/>
+        <line x1="166" y1="240" x2="282" y2="292" stroke="var(--accent, #0f766e)" stroke-opacity="0.75" stroke-width="1.5" marker-end="url(#st-arrow-ac)"/>
+
+        <!-- standard normalisation -->
+        <rect x="290" y="53" width="230" height="64" rx="8" fill="currentColor" fill-opacity="0.04" stroke="currentColor" stroke-opacity="0.25"/>
+        <text x="405" y="80" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Standard normalisation</text>
+        <text x="405" y="100" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">divide counts by library size</text>
+        <line x1="524" y1="85" x2="612" y2="85" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#st-arrow)"/>
+        <rect x="620" y="20" width="130" height="130" rx="8" fill="none" stroke="currentColor" stroke-opacity="0.25"/>
+        <circle cx="635" cy="35" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="35" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="35" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="35" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="35" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="60" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="60" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="60" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="60" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="60" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="85" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="85" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="85" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="85" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="85" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="110" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="110" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="110" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="110" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="110" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="135" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="135" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="135" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="135" r="5" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="135" r="5" fill="currentColor" opacity="0.3"/>
+        <text x="685" y="172" text-anchor="middle" font-size="12" font-weight="600" fill="var(--dot-3, #f43f5e)">Biology removed too</text>
+
+        <!-- SpaNorm -->
+        <rect x="290" y="240" width="230" height="130" rx="8" fill="currentColor" fill-opacity="0.04" stroke="var(--accent, #0f766e)" stroke-opacity="0.55"/>
+        <text x="405" y="261" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">SpaNorm</text>
+        <text x="405" y="277" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">spatially-smooth GLM</text>
+        <rect x="305" y="285" width="90" height="38" rx="4" fill="url(#st-ls)" stroke="currentColor" stroke-opacity="0.25"/>
+        <text x="350" y="337" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">technical</text>
+        <rect x="415" y="285" width="90" height="38" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.25"/>
+        <ellipse cx="460" cy="304" rx="24" ry="11" fill="var(--accent, #0f766e)" opacity="0.8"/>
+        <text x="460" y="337" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">biology</text>
+        <text x="405" y="358" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">remove technical, keep biology</text>
+        <line x1="524" y1="305" x2="612" y2="305" stroke="var(--accent, #0f766e)" stroke-opacity="0.75" stroke-width="1.5" marker-end="url(#st-arrow-ac)"/>
+        <rect x="620" y="240" width="130" height="130" rx="8" fill="none" stroke="currentColor" stroke-opacity="0.25"/>
+        <circle cx="635" cy="255" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="255" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="255" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="255" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="255" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="280" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="280" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="685" cy="280" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="710" cy="280" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="735" cy="280" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="305" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="305" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="685" cy="305" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="710" cy="305" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="735" cy="305" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="330" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="330" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="685" cy="330" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="710" cy="330" r="8" fill="var(--accent, #0f766e)" opacity="0.85"/>
+        <circle cx="735" cy="330" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="635" cy="355" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="660" cy="355" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="685" cy="355" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="710" cy="355" r="4" fill="currentColor" opacity="0.3"/>
+        <circle cx="735" cy="355" r="4" fill="currentColor" opacity="0.3"/>
+        <text x="685" y="392" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent, #0f766e)">Biology retained</text>
+      </svg>
+      <figcaption>
+        In spatial data the library size at each location is spatially smooth and correlated with the
+        tissue's biology, so scaling counts by it — the single-cell default — strips real biological
+        signal along with the technical effect. <a href="https://bioconductor.org/packages/SpaNorm/">SpaNorm</a>
+        instead fits a generalised linear model in which each gene's counts are decomposed into a
+        library-size-dependent (technical) component and a library-size-independent (biological)
+        component, both varying smoothly across space via thin-plate splines, and adjusts away only
+        the technical part.
+      </figcaption>
+    </figure>
+
+    <p class="small muted" style="margin-top:1.25rem">
+      Described in
+      <a href="https://scholar.google.com/scholar?q=%22Library+size+confounds+biology+in+spatial+transcriptomics+data%22">Library size confounds biology in spatial transcriptomics data</a>
+      (<em>Genome Biology</em>, 2024) and
+      <a href="https://scholar.google.com/scholar?q=%22SpaNorm%3A+spatially-aware+normalization+for+spatial+transcriptomics+data%22">SpaNorm: spatially-aware normalization for spatial transcriptomics data</a>
+      (<em>Genome Biology</em>, 2025).
+    </p>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <h2>Research interests</h2>
@@ -126,18 +281,45 @@
     <h2>Software highlights</h2>
     <div class="card-grid">
       <div class="card">
-        <h3><a href="https://bioconductor.org/packages/singscore/">singscore</a></h3>
-        <div class="meta">Bioconductor · since 2018 · 130,977 downloads (top 10% globally)</div>
+        <div class="card-head">
+          <picture class="sticker">
+            <source srcset="img/stickers/singscore.webp" type="image/webp">
+            <img src="img/stickers/singscore.png" alt="singscore hex sticker"
+                 width="240" height="277" loading="lazy" decoding="async">
+          </picture>
+          <div class="card-head-text">
+            <h3><a href="https://bioconductor.org/packages/singscore/">singscore</a></h3>
+            <div class="meta">Bioconductor · since 2018 · 130,977 downloads (top 10% globally)</div>
+          </div>
+        </div>
         <p>Rank-based, single-sample gene set scoring to quantify molecular phenotypes from transcriptomic profiles of individual samples.</p>
       </div>
       <div class="card">
-        <h3><a href="https://bioconductor.org/packages/SpaNorm/">SpaNorm</a></h3>
-        <div class="meta">Bioconductor · since 2024 · Genome Biology 2025</div>
+        <div class="card-head">
+          <picture class="sticker">
+            <source srcset="img/stickers/SpaNorm.webp" type="image/webp">
+            <img src="img/stickers/SpaNorm.png" alt="SpaNorm hex sticker"
+                 width="240" height="277" loading="lazy" decoding="async">
+          </picture>
+          <div class="card-head-text">
+            <h3><a href="https://bioconductor.org/packages/SpaNorm/">SpaNorm</a></h3>
+            <div class="meta">Bioconductor · since 2024 · Genome Biology 2025</div>
+          </div>
+        </div>
         <p>Spatially-aware normalisation that removes library size effects from spatial transcriptomics data while preserving the underlying biology.</p>
       </div>
       <div class="card">
-        <h3><a href="https://bioconductor.org/packages/vissE/">vissE</a></h3>
-        <div class="meta">Bioconductor &amp; <a href="https://visse.cloud/">vissE.cloud</a> · since 2021</div>
+        <div class="card-head">
+          <picture class="sticker">
+            <source srcset="img/stickers/vissE.webp" type="image/webp">
+            <img src="img/stickers/vissE.png" alt="vissE hex sticker"
+                 width="240" height="277" loading="lazy" decoding="async">
+          </picture>
+          <div class="card-head-text">
+            <h3><a href="https://bioconductor.org/packages/vissE/">vissE</a></h3>
+            <div class="meta">Bioconductor &amp; <a href="https://visse.cloud/">vissE.cloud</a> · since 2021</div>
+          </div>
+        </div>
         <p>Identify and visualise higher-order molecular phenotypes from gene set enrichment analyses; also available as a code-free web server.</p>
       </div>
     </div>

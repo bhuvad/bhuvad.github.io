@@ -451,3 +451,44 @@ table.grants td.amount { white-space: nowrap; font-weight: 600; color: var(--acc
   .hero img.avatar { width: 8.5rem; height: 8.5rem; }
   .contact-strip { padding: 1.4rem 1.4rem; }
 }
+
+/* --------------------------------------------------------------------------
+   Figures
+   -------------------------------------------------------------------------- */
+
+.figure { margin: 2rem 0 0; }
+
+.figure svg {
+  display: block;
+  width: 100%;
+  max-width: 58rem;
+  height: auto;
+  margin: 0 auto;
+  color: var(--text);
+}
+
+.figure figcaption {
+  margin: 1.1rem auto 0;
+  max-width: 46rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Package stickers
+   -------------------------------------------------------------------------- */
+
+.card-head { display: flex; align-items: flex-start; gap: 0.9rem; }
+.card-head-text { min-width: 0; }
+.card-head h3 { margin: 0 0 0.2rem; }
+
+.sticker { flex: none; width: 4.5rem; display: block; }
+.sticker img { width: 100%; height: auto; display: block; }
+
+@media (max-width: 40rem) {
+  .sticker { width: 3.6rem; }
+}
+
+/* Offset in-page anchors so the sticky header doesn't cover the heading */
+[id] { scroll-margin-top: 4.5rem; }
