@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  # Refresh the published download counts weekly even without a push.
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -15,10 +19,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Pull live totals from Bioconductor and write them into the HTML that
+      # gets published. The repository keeps its last-known values, so if
+      # Bioconductor is unreachable the script warns and leaves them in place
+      # rather than failing the deploy or publishing zeros.
+      - name: Refresh Bioconductor download counts
+        run: python3 scripts/update_download_stats.py software.html index.html
+
       # The site is plain static HTML/CSS — no build step required.
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-          exclude_assets: '.github,README.md,LICENSE.md'
+          exclude_assets: '.github,README.md,LICENSE.md,scripts'

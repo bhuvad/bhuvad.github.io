@@ -16,6 +16,29 @@ css/style.css       # All styling (light/dark via prefers-color-scheme)
 img/                # Images
 ```
 
+## Download counts
+
+The Bioconductor download numbers on the software and home pages are not
+hand-maintained. Elements tagged `data-pkg="<package>"` (plus the `dl-total`,
+`dl-total-short`, and `dl-asof` classes) are rewritten at publish time by
+`scripts/update_download_stats.py`, which sums the **total downloads** column
+of each package's [Bioconductor stats table](https://bioconductor.org/packages/stats/)
+— not distinct IPs.
+
+The deploy workflow runs it on every push to `main` and once a week on a
+schedule. If Bioconductor is unreachable the script warns and leaves the
+committed values in place, so an upstream outage never fails a deploy or
+blanks out the numbers. The values checked into git are therefore a fallback,
+superseded on the next successful deploy.
+
+To refresh the committed values locally:
+
+```sh
+python3 scripts/update_download_stats.py software.html index.html
+```
+
+Add `--check` to see what would change without writing.
+
 ## Editing
 
 Edit the HTML files directly and push to `main`. The GitHub Actions workflow
