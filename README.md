@@ -12,7 +12,6 @@ index.html          # About: bio, interests, appointments, education, awards
 publications.html   # All refereed publications and preprints
 software.html       # R/Bioconductor packages and web apps
 talks.html          # Conference talks, seminars, and workshops
-cv.html             # Full CV (print-friendly — use Print → Save as PDF)
 css/style.css       # All styling (light/dark via prefers-color-scheme)
 img/                # Images
 ```
