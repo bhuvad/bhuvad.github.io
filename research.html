@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research — Dharmesh D Bhuva</title>
+<meta name="description" content="Statistical models for spatial molecular data: normalising counts with SpaNorm, neighbourhood-dependent differential expression with spiDE, and background correction for multiplex proteomics with bgnorm.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">Dharmesh D Bhuva</a>
+    <nav class="site-nav">
+      <a href="./">About</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="software.html">Software</a>
+      <a href="talks.html">Talks</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap-narrow">
+
+<div class="page-head">
+  <h1>Research</h1>
+  <p>
+    Spatial molecular technologies report where every measurement came from, and that context changes
+    what the measurement <em>is</em>. Effects that are safely treated as nuisance in dissociated data —
+    library size, background fluorescence, the identity of neighbouring cells — become spatially
+    structured and entangled with the biology. My work builds measurement models that take this
+    seriously, so that what comes out of an analysis is biology rather than an artefact of how the
+    tissue was sampled.
+  </p>
+</div>
+
+<section class="section" id="spanorm">
+  <h2>Normalising counts</h2>
+  <p>
+    In spatial transcriptomics the library size at each location is not scattered at random: it varies
+    smoothly across the tissue and tracks the tissue's own structure. Dividing counts by it, as
+    single-cell pipelines do, therefore removes real biological signal along with the technical effect
+    — the result my group demonstrated in
+    <a href="https://scholar.google.com/scholar?q=%22Library+size+confounds+biology+in+spatial+transcriptomics+data%22">Library size confounds biology in spatial transcriptomics data</a>
+    (<em>Genome Biology</em>, 2024).
+  </p>
+  <p>
+    <a href="https://bioconductor.org/packages/SpaNorm/">SpaNorm</a> is the alternative: a gene-wise
+    generalised linear model in which spatially smooth functions — thin-plate splines — represent
+    location-specific size factors, letting spatial variation be decomposed into a library-size-associated
+    (technical) part and a library-size-independent (biological) part. Only the technical part is adjusted
+    away, using percentile-adjusted counts. The
+    <a href="./#research">diagram on the home page</a> shows the contrast with standard normalisation.
+  </p>
+  <p class="small muted">
+    <a href="https://scholar.google.com/scholar?q=%22SpaNorm%3A+spatially-aware+normalization+for+spatial+transcriptomics+data%22">SpaNorm: spatially-aware normalization for spatial transcriptomics data</a>
+    (<em>Genome Biology</em>, 2025) &middot;
+    <a href="https://github.com/bhuvad/SpaNorm">source</a>
+  </p>
+</section>
+
+<section class="section" id="spide">
+  <h2>Differential expression that depends on the neighbourhood</h2>
+  <p>
+    A cell's behaviour is not a property of the cell alone. The same cell type can respond to a treatment
+    one way when surrounded by immune cells and another way at the edge of a tumour nest, and a
+    conventional differential expression test — which asks only whether a gene changes with the condition
+    — averages those opposite responses into nothing.
+    <a href="https://github.com/BhuvaLab/spiDE">spiDE</a> asks the sharper question: <em>does the
+    condition effect itself depend on the local neighbourhood?</em>
+  </p>
+
+  <figure class="figure">
+      <svg viewBox="0 0 900 320" role="img" xmlns="http://www.w3.org/2000/svg"
+           aria-label="spiDE builds niche covariates from kernel density estimates of each cell type at several bandwidths, fits a per-gene negative binomial GLM containing a cell type by condition by niche interaction using SpaNorm's fitting engine, then combines Wald tests across covariates and bandwidths and applies a hierarchical false discovery rate correction to call context-specific differentially expressed genes.">
+        <defs>
+          <marker id="sp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <text x="110" y="88" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Multi-scale niches</text>
+        <rect x="30" y="100" width="160" height="160" rx="8" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-opacity="0.25"/>
+        <circle cx="169" cy="175" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="111" cy="192" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="66" cy="182" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="128" cy="221" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="53" cy="152" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="53" cy="223" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="137" cy="116" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="178" cy="245" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="132" cy="196" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="62" cy="112" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="114" cy="118" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="67" cy="144" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="44" cy="175" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="102" cy="228" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="113" cy="200" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="110" cy="203" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="104" cy="149" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="180" cy="249" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="158" cy="209" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="84" cy="142" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="80" cy="120" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="147" cy="166" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="159" cy="164" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="174" cy="229" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="40" cy="139" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="167" cy="176" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="177" cy="166" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="50" cy="198" r="4" fill="var(--accent, #0f766e)" opacity="0.55"/>
+        <circle cx="149" cy="148" r="4" fill="var(--dot-2, #f59e0b)" opacity="0.55"/>
+        <circle cx="52" cy="157" r="4" fill="var(--dot-4, #6366f1)" opacity="0.55"/>
+        <circle cx="110" cy="180" r="26" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle cx="110" cy="180" r="44" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle cx="110" cy="180" r="62" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle cx="110" cy="180" r="7" fill="var(--accent, #0f766e)"/>
+        <circle cx="110" cy="180" r="7" fill="none" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/>
+        <text x="110" y="282" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">kernel density of each cell type,</text>
+        <text x="110" y="297" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">measured at several bandwidths</text>
+
+        <line x1="196" y1="180" x2="268" y2="180" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+        <text x="232" y="171" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.6">covariates</text>
+
+        <rect x="275" y="110" width="270" height="140" rx="8" fill="currentColor" fill-opacity="0.04" stroke="var(--accent, #0f766e)" stroke-opacity="0.55"/>
+        <text x="410" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Negative binomial GLM</text>
+        <text x="410" y="156" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">per gene, on SpaNorm's fitting engine</text>
+        <rect x="292" y="170" width="236" height="30" rx="4" fill="currentColor" fill-opacity="0.06"/>
+        <text x="410" y="190" text-anchor="middle" font-size="11.5" fill="currentColor">log μ  ~  cell type × condition × niche</text>
+        <text x="410" y="222" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">does the condition effect depend on the niche?</text>
+
+        <line x1="551" y1="180" x2="630" y2="160" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+
+        <text x="755" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Combine &amp; control</text>
+        <rect x="640" y="134" width="230" height="44" rx="6" fill="currentColor" fill-opacity="0.04" stroke="currentColor" stroke-opacity="0.2"/>
+        <text x="755" y="152" text-anchor="middle" font-size="11" fill="currentColor">Wald tests, combined across</text>
+        <text x="755" y="168" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">covariates (Brown) + bandwidths (Cauchy)</text>
+        <line x1="755" y1="178" x2="755" y2="190" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+        <rect x="640" y="192" width="230" height="44" rx="6" fill="currentColor" fill-opacity="0.04" stroke="currentColor" stroke-opacity="0.2"/>
+        <text x="755" y="210" text-anchor="middle" font-size="11" fill="currentColor">Hierarchical FDR</text>
+        <text x="755" y="226" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">gene → index cell type → niche cell type</text>
+        <line x1="755" y1="236" x2="755" y2="248" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+        <rect x="640" y="250" width="230" height="38" rx="6" fill="var(--accent, #0f766e)" fill-opacity="0.10" stroke="var(--accent, #0f766e)" stroke-opacity="0.6"/>
+        <text x="755" y="274" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent, #0f766e)">Context-specific DE genes</text>
+      </svg>
+    <figcaption>
+      spiDE summarises each cell's neighbourhood as kernel density estimates of every surrounding cell
+      type, computed at several bandwidths so that effects at different spatial scales can be detected.
+      These niche covariates enter a per-gene negative binomial GLM — built on SpaNorm's fitting engine —
+      containing a cell type by condition by niche interaction. Because the resulting tests are heavily
+      correlated across covariates and bandwidths, evidence is pooled with Brown's method and Cauchy
+      combination, and error is controlled hierarchically from gene down to niche cell type.
+    </figcaption>
+  </figure>
+</section>
+
+<section class="section" id="bgnorm">
+  <h2>Background and staining quality in multiplex proteomics</h2>
+  <p>
+    The same principle applies beyond transcriptomics. In multiplex spatial proteomics — Akoya
+    PhenoCycler-Fusion, Cell DIVE, IMC, CosMx — a pixel's fluorescence is a mixture of true antibody
+    binding, non-specific binding, and autofluorescent background. Thresholding to remove the background
+    forces a hard yes-or-no call on every pixel and discards the uncertainty that is actually present.
+  </p>
+  <p>
+    <a href="https://github.com/BhuvaLab/bgnormR">bgnorm</a> models the whole distribution instead,
+    which turns background correction into an inference problem and yields a quality metric for free.
+  </p>
+
+  <figure class="figure">
+      <svg viewBox="0 0 900 340" role="img" xmlns="http://www.w3.org/2000/svg"
+           aria-label="bgnorm models log-transformed pixel intensities as a three-component mixture. The observed distribution, shown dashed, is the sum of a background component, a non-specific binding component, and a biological signal component. Deconvolution isolates the signal component, and the Jensen-Shannon divergence between the non-specific and signal components gives an automated staining quality metric.">
+        <defs>
+          <marker id="bg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <line x1="70.0" y1="250.0" x2="610.0" y2="250.0" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+        <text x="335" y="280" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">log₂ pixel intensity</text>
+        <text x="70" y="46" text-anchor="start" font-size="10.5" fill="currentColor" opacity="0.55">density</text>
+        <polygon points="70.0,250.0 70.0,249.7 73.3,249.6 76.7,249.4 80.0,249.2 83.3,248.8 86.7,248.3 90.0,247.6 93.3,246.6 96.7,245.3 100.0,243.7 103.3,241.5 106.7,238.8 110.0,235.4 113.3,231.2 116.7,226.2 120.0,220.1 123.3,213.0 126.7,204.8 130.0,195.5 133.3,185.2 136.7,173.9 140.0,161.8 143.3,149.0 146.7,136.0 150.0,122.9 153.3,110.2 156.7,98.2 160.0,87.3 163.3,77.9 166.7,70.3 170.0,64.8 173.3,61.6 176.7,60.9 180.0,62.6 183.3,66.7 186.7,73.1 190.0,81.4 193.3,91.5 196.7,102.9 200.0,115.2 203.3,128.1 206.7,141.2 210.0,154.2 213.3,166.7 216.7,178.5 220.0,189.4 223.3,199.4 226.7,208.2 230.0,216.0 233.3,222.7 236.7,228.3 240.0,233.0 243.3,236.9 246.7,240.0 250.0,242.5 253.3,244.4 256.7,245.9 260.0,247.0 263.3,247.9 266.7,248.5 270.0,249.0 273.3,249.3 276.7,249.5 280.0,249.7 283.3,249.8 286.7,249.9 290.0,249.9 293.3,249.9 296.7,250.0 300.0,250.0 303.3,250.0 306.7,250.0 310.0,250.0 313.3,250.0 316.7,250.0 320.0,250.0 323.3,250.0 326.7,250.0 330.0,250.0 333.3,250.0 336.7,250.0 340.0,250.0 343.3,250.0 346.7,250.0 350.0,250.0 353.3,250.0 356.7,250.0 360.0,250.0 363.3,250.0 366.7,250.0 370.0,250.0 373.3,250.0 376.7,250.0 380.0,250.0 383.3,250.0 386.7,250.0 390.0,250.0 393.3,250.0 396.7,250.0 400.0,250.0 403.3,250.0 406.7,250.0 410.0,250.0 413.3,250.0 416.7,250.0 420.0,250.0 423.3,250.0 426.7,250.0 430.0,250.0 433.3,250.0 436.7,250.0 440.0,250.0 443.3,250.0 446.7,250.0 450.0,250.0 453.3,250.0 456.7,250.0 460.0,250.0 463.3,250.0 466.7,250.0 470.0,250.0 473.3,250.0 476.7,250.0 480.0,250.0 483.3,250.0 486.7,250.0 490.0,250.0 493.3,250.0 496.7,250.0 500.0,250.0 503.3,250.0 506.7,250.0 510.0,250.0 513.3,250.0 516.7,250.0 520.0,250.0 523.3,250.0 526.7,250.0 530.0,250.0 533.3,250.0 536.7,250.0 540.0,250.0 543.3,250.0 546.7,250.0 550.0,250.0 553.3,250.0 556.7,250.0 560.0,250.0 563.3,250.0 566.7,250.0 570.0,250.0 573.3,250.0 576.7,250.0 580.0,250.0 583.3,250.0 586.7,250.0 590.0,250.0 593.3,250.0 596.7,250.0 600.0,250.0 600.0,250.0" fill="currentColor" fill-opacity="0.22"/>
+        <polygon points="70.0,250.0 70.0,250.0 73.3,250.0 76.7,250.0 80.0,250.0 83.3,250.0 86.7,250.0 90.0,250.0 93.3,250.0 96.7,250.0 100.0,250.0 103.3,250.0 106.7,250.0 110.0,250.0 113.3,250.0 116.7,250.0 120.0,250.0 123.3,250.0 126.7,250.0 130.0,250.0 133.3,250.0 136.7,250.0 140.0,250.0 143.3,250.0 146.7,249.9 150.0,249.9 153.3,249.9 156.7,249.8 160.0,249.8 163.3,249.7 166.7,249.6 170.0,249.5 173.3,249.3 176.7,249.1 180.0,248.9 183.3,248.6 186.7,248.2 190.0,247.7 193.3,247.1 196.7,246.3 200.0,245.4 203.3,244.4 206.7,243.1 210.0,241.7 213.3,240.0 216.7,238.0 220.0,235.8 223.3,233.3 226.7,230.5 230.0,227.4 233.3,224.0 236.7,220.4 240.0,216.5 243.3,212.3 246.7,208.0 250.0,203.5 253.3,198.9 256.7,194.3 260.0,189.8 263.3,185.4 266.7,181.2 270.0,177.2 273.3,173.7 276.7,170.5 280.0,167.9 283.3,165.8 286.7,164.3 290.0,163.5 293.3,163.3 296.7,163.8 300.0,164.9 303.3,166.7 306.7,169.0 310.0,171.9 313.3,175.2 316.7,178.9 320.0,183.0 323.3,187.3 326.7,191.8 330.0,196.4 333.3,200.9 336.7,205.5 340.0,209.9 343.3,214.2 346.7,218.2 350.0,222.0 353.3,225.6 356.7,228.8 360.0,231.8 363.3,234.4 366.7,236.8 370.0,238.9 373.3,240.8 376.7,242.3 380.0,243.7 383.3,244.9 386.7,245.8 390.0,246.7 393.3,247.3 396.7,247.9 400.0,248.3 403.3,248.7 406.7,249.0 410.0,249.2 413.3,249.4 416.7,249.6 420.0,249.7 423.3,249.8 426.7,249.8 430.0,249.9 433.3,249.9 436.7,249.9 440.0,250.0 443.3,250.0 446.7,250.0 450.0,250.0 453.3,250.0 456.7,250.0 460.0,250.0 463.3,250.0 466.7,250.0 470.0,250.0 473.3,250.0 476.7,250.0 480.0,250.0 483.3,250.0 486.7,250.0 490.0,250.0 493.3,250.0 496.7,250.0 500.0,250.0 503.3,250.0 506.7,250.0 510.0,250.0 513.3,250.0 516.7,250.0 520.0,250.0 523.3,250.0 526.7,250.0 530.0,250.0 533.3,250.0 536.7,250.0 540.0,250.0 543.3,250.0 546.7,250.0 550.0,250.0 553.3,250.0 556.7,250.0 560.0,250.0 563.3,250.0 566.7,250.0 570.0,250.0 573.3,250.0 576.7,250.0 580.0,250.0 583.3,250.0 586.7,250.0 590.0,250.0 593.3,250.0 596.7,250.0 600.0,250.0 600.0,250.0" fill="var(--dot-2, #f59e0b)" fill-opacity="0.42"/>
+        <polygon points="70.0,250.0 70.0,250.0 73.3,250.0 76.7,250.0 80.0,250.0 83.3,250.0 86.7,250.0 90.0,250.0 93.3,250.0 96.7,250.0 100.0,250.0 103.3,250.0 106.7,250.0 110.0,250.0 113.3,250.0 116.7,250.0 120.0,250.0 123.3,250.0 126.7,250.0 130.0,250.0 133.3,250.0 136.7,250.0 140.0,250.0 143.3,250.0 146.7,250.0 150.0,250.0 153.3,250.0 156.7,250.0 160.0,250.0 163.3,250.0 166.7,250.0 170.0,250.0 173.3,250.0 176.7,250.0 180.0,250.0 183.3,250.0 186.7,250.0 190.0,250.0 193.3,250.0 196.7,250.0 200.0,250.0 203.3,250.0 206.7,250.0 210.0,250.0 213.3,250.0 216.7,249.9 220.0,249.9 223.3,249.9 226.7,249.9 230.0,249.9 233.3,249.9 236.7,249.8 240.0,249.8 243.3,249.8 246.7,249.7 250.0,249.7 253.3,249.6 256.7,249.5 260.0,249.4 263.3,249.3 266.7,249.2 270.0,249.1 273.3,249.0 276.7,248.8 280.0,248.6 283.3,248.4 286.7,248.2 290.0,247.9 293.3,247.6 296.7,247.3 300.0,247.0 303.3,246.6 306.7,246.2 310.0,245.7 313.3,245.2 316.7,244.6 320.0,244.0 323.3,243.4 326.7,242.7 330.0,242.0 333.3,241.2 336.7,240.3 340.0,239.4 343.3,238.5 346.7,237.5 350.0,236.5 353.3,235.5 356.7,234.4 360.0,233.3 363.3,232.1 366.7,230.9 370.0,229.8 373.3,228.6 376.7,227.4 380.0,226.2 383.3,225.0 386.7,223.8 390.0,222.7 393.3,221.6 396.7,220.5 400.0,219.5 403.3,218.6 406.7,217.7 410.0,216.9 413.3,216.2 416.7,215.5 420.0,215.0 423.3,214.5 426.7,214.2 430.0,214.0 433.3,213.8 436.7,213.8 440.0,213.9 443.3,214.1 446.7,214.4 450.0,214.8 453.3,215.3 456.7,215.9 460.0,216.6 463.3,217.3 466.7,218.2 470.0,219.1 473.3,220.1 476.7,221.1 480.0,222.2 483.3,223.3 486.7,224.5 490.0,225.7 493.3,226.9 496.7,228.1 500.0,229.3 503.3,230.4 506.7,231.6 510.0,232.8 513.3,233.9 516.7,235.0 520.0,236.1 523.3,237.1 526.7,238.1 530.0,239.1 533.3,240.0 536.7,240.8 540.0,241.6 543.3,242.4 546.7,243.1 550.0,243.8 553.3,244.4 556.7,245.0 560.0,245.5 563.3,246.0 566.7,246.4 570.0,246.8 573.3,247.2 576.7,247.5 580.0,247.8 583.3,248.1 586.7,248.3 590.0,248.5 593.3,248.7 596.7,248.9 600.0,249.0 600.0,250.0" fill="var(--accent, #0f766e)" fill-opacity="0.42"/>
+        <polyline points="70.0,249.7 73.3,249.6 76.7,249.4 80.0,249.2 83.3,248.8 86.7,248.3 90.0,247.6 93.3,246.6 96.7,245.3 100.0,243.7 103.3,241.5 106.7,238.8 110.0,235.4 113.3,231.2 116.7,226.2 120.0,220.1 123.3,213.0 126.7,204.8 130.0,195.5 133.3,185.2 136.7,173.9 140.0,161.7 143.3,149.0 146.7,135.9 150.0,122.8 153.3,110.1 156.7,98.0 160.0,87.1 163.3,77.6 166.7,69.9 170.0,64.3 173.3,60.9 176.7,60.0 180.0,61.5 183.3,65.3 186.7,71.2 190.0,79.1 193.3,88.5 196.7,99.2 200.0,110.6 203.3,122.5 206.7,134.3 210.0,145.8 213.3,156.6 216.7,166.5 220.0,175.2 223.3,182.6 226.7,188.6 230.0,193.3 233.3,196.6 236.7,198.5 240.0,199.3 243.3,198.9 246.7,197.7 250.0,195.6 253.3,192.9 256.7,189.7 260.0,186.3 263.3,182.6 266.7,178.9 270.0,175.3 273.3,171.9 276.7,168.8 280.0,166.2 283.3,164.0 286.7,162.4 290.0,161.3 293.3,160.9 296.7,161.1 300.0,161.8 303.3,163.2 306.7,165.1 310.0,167.5 313.3,170.4 316.7,173.6 320.0,177.0 323.3,180.7 326.7,184.5 330.0,188.3 333.3,192.1 336.7,195.8 340.0,199.4 343.3,202.7 346.7,205.8 350.0,208.6 353.3,211.0 356.7,213.2 360.0,215.0 363.3,216.6 366.7,217.8 370.0,218.7 373.3,219.3 376.7,219.7 380.0,219.9 383.3,219.8 386.7,219.7 390.0,219.3 393.3,218.9 396.7,218.4 400.0,217.9 403.3,217.3 406.7,216.7 410.0,216.1 413.3,215.6 416.7,215.1 420.0,214.7 423.3,214.3 426.7,214.0 430.0,213.8 433.3,213.7 436.7,213.7 440.0,213.8 443.3,214.1 446.7,214.4 450.0,214.8 453.3,215.3 456.7,215.9 460.0,216.6 463.3,217.3 466.7,218.2 470.0,219.1 473.3,220.1 476.7,221.1 480.0,222.2 483.3,223.3 486.7,224.5 490.0,225.7 493.3,226.9 496.7,228.1 500.0,229.3 503.3,230.4 506.7,231.6 510.0,232.8 513.3,233.9 516.7,235.0 520.0,236.1 523.3,237.1 526.7,238.1 530.0,239.1 533.3,240.0 536.7,240.8 540.0,241.6 543.3,242.4 546.7,243.1 550.0,243.8 553.3,244.4 556.7,245.0 560.0,245.5 563.3,246.0 566.7,246.4 570.0,246.8 573.3,247.2 576.7,247.5 580.0,247.8 583.3,248.1 586.7,248.3 590.0,248.5 593.3,248.7 596.7,248.9 600.0,249.0" fill="none" stroke="currentColor" stroke-opacity="0.75" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <text x="176" y="35" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.8">background</text>
+        <text x="293" y="145" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.8">non-specific binding</text>
+        <text x="436" y="196" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.8">biological signal</text>
+        <text x="542" y="190" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.8">observed</text>
+        <line x1="531" y1="198" x2="505" y2="230" stroke="currentColor" stroke-opacity="0.45" stroke-width="1" marker-end="url(#bg-arrow)"/>
+        <line x1="293" y1="74" x2="436" y2="74" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.2" marker-start="url(#bg-arrow)" marker-end="url(#bg-arrow)"/>
+        <text x="364" y="66" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.8">JSD → staining quality</text>
+
+        <rect x="645" y="95" width="230" height="120" rx="8" fill="currentColor" fill-opacity="0.04" stroke="var(--accent, #0f766e)" stroke-opacity="0.55"/>
+        <text x="760" y="121" text-anchor="middle" font-size="12.5" font-weight="600" fill="currentColor">bgnorm deconvolution</text>
+        <text x="662" y="146" font-size="10" fill="currentColor" opacity="0.75">· keeps the signal component only</text>
+        <text x="662" y="163" font-size="10" fill="currentColor" opacity="0.75">· soft per-pixel correction</text>
+        <text x="662" y="180" font-size="10" fill="currentColor" opacity="0.75">· no hard thresholding</text>
+        <text x="662" y="197" font-size="10" fill="currentColor" opacity="0.75">· flags weak staining via JSD</text>
+      </svg>
+    <figcaption>
+      bgnorm treats the observed distribution of log-transformed pixel intensities as a three-component
+      mixture. Deconvolving it isolates the biological signal component, so each pixel is corrected in
+      proportion to how likely it is to carry real signal rather than by a hard threshold. The
+      Jensen-Shannon divergence between the non-specific and signal components measures how well a
+      marker separated from its background, giving an automated staining-quality check across markers,
+      samples, and tissue slices.
+    </figcaption>
+  </figure>
+
+  <p class="small muted">
+    Kharbanda, Tubelleza <em>et al.</em>, 2025 &middot; available for R
+    (<a href="https://github.com/BhuvaLab/bgnormR">bgnormR</a>) and Python
+    (<a href="https://github.com/BhuvaLab/bgnormPy">bgnormPy</a>), including a Java-free reader for
+    Akoya QPTIFF, OME-TIFF, and OME-Zarr images.
+  </p>
+</section>
+
+<section class="section">
+  <div class="contact-strip">
+    <div>
+      <h2>Interested in this work?</h2>
+      <p>I'm always glad to talk about spatial methods, collaborations, or graduate research projects.</p>
+    </div>
+    <a class="btn" href="mailto:d.bhuva@uq.edu.au">Email me</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Dharmesh D Bhuva</div>
+    <div>
+      <a href="https://scholar.google.com/citations?user=Jz-azvUAAAAJ&amp;hl=en">Scholar</a> &middot;
+      <a href="https://github.com/bhuvad">GitHub</a> &middot;
+      <a href="https://orcid.org/0000-0002-6398-9157">ORCID</a> &middot;
+      <a href="https://github.com/bhuvad/bhuvad.github.io">Site source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

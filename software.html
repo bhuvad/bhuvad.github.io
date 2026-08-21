@@ -18,6 +18,7 @@
     <a class="brand" href="./">Dharmesh D Bhuva</a>
     <nav class="site-nav">
       <a href="./">About</a>
+      <a href="research.html">Research</a>
       <a href="publications.html">Publications</a>
       <a href="software.html" aria-current="page">Software</a>
       <a href="talks.html">Talks</a>
@@ -30,13 +31,55 @@
 <div class="page-head">
   <h1>Software</h1>
   <p>
-    I have developed or co-developed 9 open-source R/Bioconductor packages and the vissE.cloud web
-    server, with <strong>242,000+ downloads</strong> to date (as of May 2026). Everything is free and
-    open source — bug reports and contributions are welcome on GitHub.
+    I have developed or co-developed 12 open-source R and Python packages plus the vissE.cloud web
+    server. The released Bioconductor packages have been downloaded <strong>242,000+ times</strong>
+    to date (as of May 2026). Everything is free and open source — bug reports and contributions
+    are welcome on GitHub.
   </p>
 </div>
 
 <section class="section">
+  <h2>In development</h2>
+  <p class="muted" style="margin-top:-0.4rem">
+    Current methods work, available from GitHub ahead of release.
+  </p>
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>spiDE</h3>
+      <div class="meta">2026 · R · context-specific differential expression</div>
+      <p>Tests whether a condition's effect on gene expression depends on the local neighbourhood, using multi-bandwidth niche covariates in a per-gene negative binomial GLM built on SpaNorm's fitting engine.</p>
+      <div class="links">
+        <a href="https://github.com/BhuvaLab/spiDE">GitHub</a>
+        <a href="research.html#spide">How it works</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>bgnormR</h3>
+      <div class="meta">2026 · R · multiplex spatial proteomics</div>
+      <p>Background correction, normalisation, and quality control for multiplex spatial proteomics via a three-component mixture model, with a Java-free reader for Akoya QPTIFF, OME-TIFF, and OME-Zarr images.</p>
+      <div class="links">
+        <a href="https://github.com/BhuvaLab/bgnormR">GitHub</a>
+        <a href="research.html#bgnorm">How it works</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>bgnormPy</h3>
+      <div class="meta">2026 · Python · multiplex spatial proteomics</div>
+      <p>The Python implementation of bgnorm, with entry points for SpatialData, xarray, AnnData, and raw image formats, plus optional experiment tracking through MLflow.</p>
+      <div class="links">
+        <a href="https://github.com/BhuvaLab/bgnormPy">GitHub</a>
+        <a href="research.html#bgnorm">How it works</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Released</h2>
   <div class="card-grid">
 
     <div class="card">
