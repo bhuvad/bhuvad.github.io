@@ -492,3 +492,11 @@ table.grants td.amount { white-space: nowrap; font-weight: 600; color: var(--acc
 
 /* Offset in-page anchors so the sticky header doesn't cover the heading */
 [id] { scroll-margin-top: 4.5rem; }
+
+/* Cross-link from a publication to the software it produced */
+.pub-soft {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+.pub-soft a { font-weight: 500; }
