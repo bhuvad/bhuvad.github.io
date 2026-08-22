@@ -19,8 +19,10 @@
   --dot-4: #6366f1;
 }
 
+/* Dark palette: applied when the system asks for it (unless the viewer chose
+   light), and whenever the viewer explicitly chose dark. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0d0c0b;
     --bg-card: #1a1815;
     --bg-accent-soft: #12201e;
@@ -32,6 +34,19 @@
     --border: #2b2825;
     --shadow: 0 1px 3px rgb(0 0 0 / 0.4), 0 4px 14px rgb(0 0 0 / 0.3);
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d0c0b;
+  --bg-card: #1a1815;
+  --bg-accent-soft: #12201e;
+  --text: #e9e6e2;
+  --text-muted: #b0aaa2;
+  --text-faint: #6f695f;
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --border: #2b2825;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.4), 0 4px 14px rgb(0 0 0 / 0.3);
 }
 
 * { box-sizing: border-box; }
@@ -403,9 +418,11 @@ table.grants td.amount { white-space: nowrap; font-weight: 600; color: var(--acc
 }
 .btn:hover { background: var(--accent-strong); color: #fff; text-decoration: none; }
 @media (prefers-color-scheme: dark) {
-  .btn { color: #06211d; }
-  .btn:hover { color: #06211d; }
+  :root:not([data-theme="light"]) .btn,
+  :root:not([data-theme="light"]) .btn:hover { color: #06211d; }
 }
+:root[data-theme="dark"] .btn,
+:root[data-theme="dark"] .btn:hover { color: #06211d; }
 
 /* Page intro (subpages) */
 
@@ -500,3 +517,54 @@ table.grants td.amount { white-space: nowrap; font-weight: 600; color: var(--acc
   color: var(--text-faint);
 }
 .pub-soft a { font-weight: 500; }
+
+/* --------------------------------------------------------------------------
+   Theme toggle
+   -------------------------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-left: 0.35rem;
+  padding: 0;
+  flex: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+
+/* show the sun in dark mode (click -> light) and the moon in light mode */
+.theme-toggle .icon-sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* --------------------------------------------------------------------------
+   Stickers with a light and a dark artwork variant
+   -------------------------------------------------------------------------- */
+
+.sticker-themed { position: relative; }
+.sticker-themed .s-dark { display: none; }
+.sticker-themed .s-light { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sticker-themed .s-dark { display: block; }
+  :root:not([data-theme="light"]) .sticker-themed .s-light { display: none; }
+}
+:root[data-theme="dark"] .sticker-themed .s-dark { display: block; }
+:root[data-theme="dark"] .sticker-themed .s-light { display: none; }
+:root[data-theme="light"] .sticker-themed .s-dark { display: none; }
+:root[data-theme="light"] .sticker-themed .s-light { display: block; }
