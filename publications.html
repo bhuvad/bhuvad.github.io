@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem("theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,6 +23,10 @@
       <a href="publications.html" aria-current="page">Publications</a>
       <a href="software.html">Software</a>
       <a href="talks.html">Talks</a>
+      <button class="theme-toggle" type="button" hidden aria-label="Switch theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-13.5a1 1 0 0 1 1 1V6a1 1 0 1 1-2 0V4.5a1 1 0 0 1 1-1zm0 15a1 1 0 0 1 1 1V21a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zM3.5 12a1 1 0 0 1 1-1H6a1 1 0 1 1 0 2H4.5a1 1 0 0 1-1-1zm14.5 0a1 1 0 0 1 1-1h1.5a1 1 0 1 1 0 2H19a1 1 0 0 1-1-1zM5.6 5.6a1 1 0 0 1 1.4 0l1.1 1.1a1 1 0 0 1-1.4 1.4L5.6 7a1 1 0 0 1 0-1.4zm10.3 10.3a1 1 0 0 1 1.4 0l1.1 1.1a1 1 0 0 1-1.4 1.4l-1.1-1.1a1 1 0 0 1 0-1.4zM18.4 5.6a1 1 0 0 1 0 1.4l-1.1 1.1a1 1 0 0 1-1.4-1.4L17 5.6a1 1 0 0 1 1.4 0zM8.1 15.9a1 1 0 0 1 0 1.4L7 18.4a1 1 0 0 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 0z"/></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -226,5 +231,6 @@
   </div>
 </footer>
 
+<script src="js/theme.js"></script>
 </body>
 </html>
